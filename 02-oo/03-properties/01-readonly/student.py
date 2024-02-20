@@ -10,7 +10,3 @@ class MusicalNote:
     @property
     def pitch(self):
         return self.__pitch
-    
-        
-    
-
