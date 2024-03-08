@@ -37,4 +37,3 @@ class Time:
             self.__seconds = value
         else:
             raise ValueError("Seconden moeten tussen 0s en 59s zijn")
-
