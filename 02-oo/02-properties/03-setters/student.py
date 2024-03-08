@@ -1,4 +1,3 @@
-# Write your code here
 class Time:
     def __init__(self, hours, minutes, seconds):
         self.hours = hours
@@ -37,4 +36,3 @@ class Time:
             self.__seconds = value
         else:
             raise ValueError("Seconden moeten tussen 0s en 59s zijn")
-
