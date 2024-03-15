@@ -18,7 +18,7 @@ class Archer(Human):
         if num > self.__num_arrows:
             raise Exception("Not enough arrows")
         else:
-            self.__num_arrows -= num
+            self.__num_arrows - num
 
 
 class Crossbowman(Archer):
