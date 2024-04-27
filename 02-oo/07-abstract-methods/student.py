@@ -29,8 +29,6 @@ class C(B):
     def f(self):
         pass
 
-
-# Abstract
 class D(A):
     def b(self):
         self.f()
