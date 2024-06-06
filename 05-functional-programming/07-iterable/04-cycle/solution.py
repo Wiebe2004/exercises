@@ -9,3 +9,5 @@ class Cycle:
     def __next__(self):
         self.__index = (self.__index + 1) % len(self.__elts)
         return self.__elts[self.__index]
+
+    

@@ -189,19 +189,19 @@ Have the test check the result by asserting that `test_merge_sorted(left, right)
 
 ### `merge_sort`
 
-`merge_sort(ns)` receives a list and returns the same list, but with its elements sorted.
-It does not modify `ns` in any way.
+`merge_sort(ns)` ontvangt een lijst en geeft dezelfde lijst terug, maar met de elementen gesorteerd.
+Het wijzigt `ns` op geen enkele manier.
 
-It works as follows:
+Het werkt als volgt:
 
-* It splits `ns` in two, say `left` and `right`.
-* It recursively sorts `left` and `right`.
-  Let's call the results `sorted_left` and `sorted_right`.
-* `sorted_left` and `sorted_right` are merged using `merge_sorted_lists`.
+* Het splitst `ns` in tweeën, bijvoorbeeld `left` en `right`.
+* Het sorteert `links` en `rechts` recursief.
+  Laten we de resultaten `sorted_left` en `sorted_right` noemen.
+* `sorted_left` en `sorted_right` worden samengevoegd met `merge_sorted_lists`.
 
-As always with recursion, you also need to know when to stop.
-Ask yourself the question which cases are trivially solved.
-Hint: what should happen if `merge_sort` receives the empty list?
+Zoals altijd met recursie, moet je ook weten wanneer je moet stoppen.
+Stel jezelf de vraag welke gevallen triviaal opgelost zijn.
+Hint: wat zou er moeten gebeuren als `merge_sort` de lege lijst ontvangt?
 
 Implement `merge_sort` as described above.
 Write a parametrized test named `test_merge_sort`.

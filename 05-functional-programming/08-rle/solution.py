@@ -14,8 +14,8 @@ def rle_encode(data):
     except StopIteration:
         pass
 
-
 def rle_decode(data):
     for datum, count in data:
         for _ in range(count):
             yield datum
+
