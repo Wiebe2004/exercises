@@ -4,3 +4,5 @@ def rotate(xs, n):
         xs.append(x)
 
     return xs
+
+print(rotate([1, 2, 3, 4, 5], 2))

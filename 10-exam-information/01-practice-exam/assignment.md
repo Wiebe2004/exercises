@@ -78,23 +78,39 @@ RuntimeError
 ```
 
 * Define a class `StorageDevice`.
+
 * Define its constructor.
+  
   * It should have two parameters: `block_count` and `block_size`.
+  
   * In a *private* field `available_blocks`, it stores a set containing the numbers `0` to `block_count` (exclusive).
+  
   * In a *private* field `used_blocks`, it stores an empty set.
+  
   * It stores the block size in a *private* field `block_size`.
+
 * Add a public property `available_block_count` which returns the number of available blocks.
+
 * Add a public property `used_block_count` which returns the number of used blocks.
+
 * Add a public property `total_block_count` which returns the total number of blocks (both available and used).
+
 * Add a public property `block_size` which returns the size of the blocks.
+
 * Define a public method `allocate`.
+
   * It has a parameter  `block_count` (an integer).
+
   * The method takes `block_count` available blocks from `available_blocks` and returns them as a list.
         It also moves these blocks from `available_blocks` to `used_blocks`.
         Note: in order to take N blocks from `available_blocks`, it might be helpful to first convert it into a list.
+
   * If there are insufficient available blocks left, a `RuntimeError` is raised.
+
 * Define a public method `free`.
+
   * It has a parameter `blocks` (a list of block indices).
+
   * Only used blocks can be freed.
         If `blocks` contains blocks that do not appear in the `used_blocks`, none of the blocks are freed and a `RuntimeError` is raised.
   * The method adds the given blocks to `available_blocks` and removes them from `used_blocks`.
@@ -111,22 +127,36 @@ An `Entity` has a name and keeps track of the `StorageDevice` it is stored on.
 An `Entity`'s name has to obey certain rules:
 
 * The name can only contain letters (both upper and lower are permitted), digits and dots.
+
 * The name must have at least 1 character and be no longer than 16 characters.
 
 * Define an abstract class `Entity`.
+
 * Define a static method `is_valid_name(name)` that returns `True` if `name` is valid and `False` otherwise.
+
 * Define a constructor for `Entity`.
+
   * It has two parameters: `storage` (a `StorageDevice` object) and `name` (a string).
+
   * It must store both these values in private fields.
+
   * It must raise a `RuntimeError` in case the given `name` is invalid.
+
 * Define a property `name`.
+
   * It must have a getter, i.e., `entity.name` must return the `Entity`'s name.
+
   * It must have a setter, i.e., `entity.name = new_name` must update the `Entity`'s name.
+
   * The setter must raise a `RuntimeError` in case the new name is invalid.
+
 * Define a readonly property `storage` that returns the `StorageDevice` the `Entity` is stored on.
+
 * Define a readonly abstract property `size_in_blocks`.
+
 * Define a readonly property `size_in_bytes` that returns the size of the `Entity` in bytes.
       This is done by multiplying the `Entity`'s `size_in_blocks` by the `StorageDevice`'s `block_size`.
+
 * Define an abstract method `clear()`.
       It takes no parameters.
 
@@ -195,14 +225,22 @@ RuntimeError
 ```
 
 * Define a class `File`.
+
 * It inherits from `Entity`.
+
 * Define `File`'s constructor.
+
   * The constructor takes two parameters: `storage` and `name`.
+
   * It relies on `Entity`'s constructor to initialize its `storage` and `name`.
+
   * A freshly created `File` is empty and therefore occupies zero blocks of storage.
+
 * Define a method `grow(block_count)` which allocates an extra `block_count` blocks from its storage.
       These extra blocks must also be kept track of.
+
 * Define a readonly property `size_in_blocks` which returns the number of blocks occupied by the `File`.
+
 * Define the method `clear()`.
       It returns all of the blocks the `File` occupies to the `StorageDevice` (using `free`).
       After `clear()`, the `File` is empty.
@@ -218,7 +256,9 @@ Children can be added using `add(child)`.
 Clearing a directory means all files it contains are cleared recursively:
 
 * All direct `File` children must be cleared.
+
 * If a `Directory` contains subdirectories, then the `File`s in those subdirectories must also be cleared.
+
 * The same happens for subdirectories of subdirectories, etc.
 
 Example usage:
@@ -274,12 +314,20 @@ Example usage:
 ```
 
 * Define a class `Directory`.
+
 * It inherits from `Entity`.
+
 * Define `Directory`'s constructor.
+
   * The constructor takes two parameters: `storage` and `name`.
+
   * It relies on `Entity`'s constructor to initialize its `storage` and `name`.
+
   * A freshly created `Directory` is empty and starts with an empty list of `children`.
+
 * Define a method `add(entity)` that adds the given `entity` (which can be either a `File` or a `Directory`) to the list of `children`.
+
 * Define a property `size_in_blocks` that computes the total size of the `Directory`.
       The size of a `Directory` is defined as the sum of the sizes of all its `children`.
+
 * Define a method `clear()` that clears all files recursively, as described above.

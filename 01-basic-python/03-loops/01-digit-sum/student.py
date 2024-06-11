@@ -1,9 +1,10 @@
-# Write your code here
 def last_digit(n):
     return n % 10
 
+
 def remove_last_digit(n):
     return n // 10
+
 
 def digit_sum(n):
     result = 0
@@ -11,3 +12,5 @@ def digit_sum(n):
         result += last_digit(n)
         n = remove_last_digit(n)
     return result
+
+print(digit_sum(555))

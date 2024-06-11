@@ -5,3 +5,4 @@ def contains_duplicates(xs):
                 return True
 
     return False
+
