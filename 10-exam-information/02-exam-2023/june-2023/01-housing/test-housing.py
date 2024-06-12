@@ -9,3 +9,18 @@
 # Je mag extra tests toevoegen als je je code grondiger wilt testen.
 # Extra tests zullen niet leiden tot een hoger cijfer.
 # Dit bestand moet zonder fouten uitgevoerd kunnen worden om punten te krijgen voor de vereiste testen.
+
+from housing import Villa,StudentenKot 
+
+import pytest
+
+def setup_maximum_occupants():
+    global studio,studio2,appartement
+    studio = StudentenKot("Dorpsstraat 25",30)
+    studio2 = StudentenKot("Dorpsstraat 26",40)
+    appartement = Villa("lakenlaan 20",200,3,None)
+
+def test_maximum_occupants():
+    assert studio.maximum_occupants == 1
+    assert studio2.maximum_occupants == 2
+    assert appartement.maximum_occupants == 6

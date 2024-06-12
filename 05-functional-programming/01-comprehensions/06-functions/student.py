@@ -1,12 +1,13 @@
 def movie_count(movies, director):
-    return len([movie for movie in movies if movie.director == director])
+    return len([movie for movie in movies if director == movie.director])
 
 
 def longest_movie_runtime_with_actor(movies, actor):
     return max([movie.runtime for movie in movies if actor in movie.actors])
 
+
 def has_director_made_genre(movies, director, genre):
-    return any([genre in movie.genres and movie.director == director for movie in movies])
+    return any(genre in movie.genres and movie.director == director for movie in movies)
 
 
 def is_prime(n):
@@ -24,11 +25,17 @@ def count_matching(xs, ys):
 def weighted_sum(ns, weights):
     return sum(n * w for n, w in zip(ns, weights))
 
+
 def alternating_caps(string):
-    chars = [char.upper() if index % 2 == 0 else char.lower() for index, char in enumerate(string)]
+    chars = [
+        char.upper() if index % 2 == 0 else char.lower()
+        for index, char in enumerate(string)
+    ]
     return "".join(chars)
+
 
 def find_repeated_words(sentence):
     import re
-    words = [word.lower() for word in re.findall('[a-zA-Z]+', sentence)]
+
+    words = [word.lower() for word in re.findall("[a-zA-Z]+", sentence)]
     return {word1 for word1, word2 in zip(words, words[1:]) if word1 == word2}

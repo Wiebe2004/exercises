@@ -10,4 +10,4 @@ def group_by_value(cards):
 
 
 def partition_by_color(cards):
-    return partition(cards, lambda card: card.suit in ['clubs', 'spades'])
+    return partition(cards, lambda card: card.suit in ["clubs", "spades"])

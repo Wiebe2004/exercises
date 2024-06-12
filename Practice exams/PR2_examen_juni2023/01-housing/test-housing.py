@@ -9,7 +9,7 @@
 # Je mag extra tests toevoegen als je je code grondiger wilt testen.
 # Extra tests zullen niet leiden tot een hoger cijfer.
 # Dit bestand moet zonder fouten uitgevoerd kunnen worden om punten te krijgen voor de vereiste testen.
-from housing import Villa, StudentKot
+from housingSolution import Villa, StudentKot
 
 import pytest
 
