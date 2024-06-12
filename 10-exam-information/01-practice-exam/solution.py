@@ -12,11 +12,11 @@ class StorageDevice:
 
     @property
     def available_block_count(self):
-        return self.__available_blocks
+        return len(self.__available_blocks)
 
     @property
     def used_block_count(self):
-        return self.__used_blocks
+        return len(self.__used_blocks)
 
     @property
     def total_block_count(self):
@@ -46,16 +46,19 @@ class StorageDevice:
                 self.__used_blocks.remove(block)
 
 
-def is_valid_name(name):
-    if 0 <= len(name) < 16 and re.fullmatch(r"^[A-Za-z0-9.]+$", name):
-        return True
-    else:
-        return False
+
 
 
 class Entity(ABC):
+    @staticmethod
+    def is_valid_name(name):
+        if 0 <= len(name) < 16 and re.fullmatch(r"^[A-Za-z0-9.]+$", name):
+            return True
+        else:
+            return False
+    
     def __init__(self, storage, name):
-        if not is_valid_name(name):
+        if not self.is_valid_name(name):
             raise RuntimeError()
         self.__storage = storage
         self.__name = name
@@ -66,7 +69,7 @@ class Entity(ABC):
 
     @name.setter
     def name(self, new_name):
-        if not is_valid_name(new_name):
+        if not self.is_valid_name(new_name):
             raise RuntimeError()
         self.__name = new_name
 
