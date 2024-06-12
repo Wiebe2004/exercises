@@ -30,7 +30,7 @@ class StorageDevice:
         if block_count > self.__available_blocks:
             raise RuntimeError("No sufficient blocks")
 
-        allocated_blocks = list(self.__available_blocks)[:block_count]
+        allocated_blocks = list(self.__available_blocks)[:block_count] #Deze regel allocated_blocks = list(self.__available_blocks)[:block_count] maakt een nieuwe lijst genaamd allocated_blocks. Deze lijst bevat de eerste block_count elementen van de set self.__available_blocks.
 
         for block in allocated_blocks:
             self.__available_blocks.remove(block)
