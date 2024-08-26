@@ -4,7 +4,7 @@ class Human:
 
     def get_name(self):
         return self.__name
-
+    
 
 class Archer(Human):
     def __init__(self, name, num_arrows):

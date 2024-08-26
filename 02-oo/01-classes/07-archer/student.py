@@ -1,6 +1,6 @@
 class Archer:
     def __init__(self, name, health, num_arrows):
-        pass
+        self.
 
     def get_shot(self):
         pass

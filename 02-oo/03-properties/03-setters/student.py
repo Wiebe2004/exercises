@@ -35,8 +35,4 @@ class Time:
         if 0 <= value <= 59:
             self.__seconds = value
         else:
-<<<<<<< HEAD:02-oo/02-properties/03-setters/student.py
             raise ValueError("Seconden moeten tussen 0s en 59s zijn")
-=======
-            raise ValueError("Seconden moeten tussen 0s en 59s zijn")
->>>>>>> 5c9c7042bdc85aad3233af49c7cf249e36b1c24a:02-oo/03-properties/03-setters/student.py

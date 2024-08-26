@@ -6,3 +6,4 @@ def group_by(xs, key_function):
             result[key] = []
         result[key].append(x)
     return result
+

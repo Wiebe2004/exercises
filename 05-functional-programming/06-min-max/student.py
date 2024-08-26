@@ -7,4 +7,3 @@ def closest(points, target_point):
 
     tx, ty = target_point
     return min(points, key=distance)
-

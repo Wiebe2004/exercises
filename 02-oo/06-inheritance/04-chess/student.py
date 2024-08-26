@@ -19,7 +19,7 @@ class Position:
         return Position(self.x + dx, self.y + dy)
 
     def __repr__(self):
-        return f"Position({self.x}, {self.y})"
+        return f'Position({self.x}, {self.y})'
 
     def __eq__(self, other):
         if not isinstance(other, Position):
@@ -29,15 +29,21 @@ class Position:
     def __hash__(self):
         return hash((self.x, self.y))
 
-
 class ChessPiece:
-    def __init__(self, position, color):
+
+    def __init__(self,position,color):
         if not ChessPiece.is_valid_position(position):
-            raise ValueError("invalid position")
+            raise ValueError('invalid position')
         if not ChessPiece.is_valid_color(color):
-            raise ValueError("invalid color")
+            raise ValueError('invalid color')
         self.__position = position
         self.__color = color
+        
+    
+    def move(self, new_position):
+        if not self.is_legal_move(new_position):
+            raise ValueError("illegal move")
+        self.__position = new_position
 
     @property
     def position(self):
@@ -49,23 +55,17 @@ class ChessPiece:
 
     @staticmethod
     def is_valid_color(color):
-        return color in ["black", "white"]
+        return color in ['black', 'white']
 
     @staticmethod
     def is_valid_position(position):
         return 0 <= position.x < 8 and 0 <= position.y < 8
 
-    def move(self, new_position):
-        if not self.is_legal_move(new_position):
-            raise ValueError("illegal move")
-        self.__position = new_position
-
-
 class Pawn(ChessPiece):
     def is_legal_move(self, new_position):
         if not self.is_valid_position(new_position):
             return False
-        direction = 1 if self.color == "white" else -1
+        direction = 1 if self.color == 'white' else -1
         return self.position.move(0, direction) == new_position
 
 
@@ -80,4 +80,3 @@ class King(ChessPiece):
         if abs(new_position.y - self.position.y) > 1:
             return False
         return True
-

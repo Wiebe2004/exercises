@@ -1,31 +1,23 @@
 import pytest
 from parentheses import matching_parentheses
 
-
-@pytest.mark.parametrize(
-    "string",
-    [
-        "",
-        "()",
-        "(())",
-        "()()()",
-        "(())()",
-    ],
-)
+@pytest.mark.parametrize('string', [
+    '()',
+    '(())',
+    '()(())',
+    '(()(()))',
+])
 def test_matching_parentheses(string):
-    actual = matching_parentheses(string)
-    assert actual == True, f"{string} has matching parantheses."
+    assert matching_parentheses(string), f"String: {string} is all matching"
 
-
-@pytest.mark.parametrize(
-    "string",
-    [
-        "(",
-        ")(",
-        ")",
-        '(()))(()'
-    ],
-)
-def test_nonMatching_parentheses(string):
-    actual = matching_parentheses(string)
-    assert actual == False, f"{string} has no matching parantheses."
+@pytest.mark.parametrize('string', [
+    "((())",
+    "(()))",
+    "())(",
+    "(()))(",
+    "())(()",
+])
+def test_NonMatching_parentheses(string):
+    assert not matching_parentheses(string), f"String: {string} is not matching"
+    #Alternatieve oplossing, kan ook voor true
+    # assert matching_parentheses(string) == False, f"String: {string} is not matching"

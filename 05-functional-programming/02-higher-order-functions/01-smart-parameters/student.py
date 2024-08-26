@@ -1,2 +1,3 @@
 def repeat(function, n):
-    for _ in range(n): function()
+    for x in range(n):
+        function()

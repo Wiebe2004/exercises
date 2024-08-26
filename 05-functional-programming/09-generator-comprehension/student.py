@@ -7,3 +7,6 @@ def is_prime(n):
 
 def primes():
     return (n for n in count(2) if is_prime(n))
+
+
+# print(primes())

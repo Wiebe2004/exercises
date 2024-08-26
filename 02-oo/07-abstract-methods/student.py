@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
-
 class A(ABC):
     def a(self):
         self.b()
@@ -16,7 +15,6 @@ class A(ABC):
     def c(self):
         ...
 
-
 class B(A):
     def b(self):
         self.a()
@@ -28,6 +26,7 @@ class B(A):
 class C(B):
     def f(self):
         pass
+
 
 class D(A):
     def b(self):

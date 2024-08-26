@@ -2,4 +2,4 @@
 import re
 
 def contains_no_a(string):
-    return re.fullmatch('[^m]*', string)
+    return re.fullmatch('[^a]*', string)
