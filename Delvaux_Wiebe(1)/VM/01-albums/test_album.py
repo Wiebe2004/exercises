@@ -12,11 +12,36 @@
 
 from album import *
 
-def test_create_black_cover():
-    alors_on_dance = Song("SONG0001aaaa", "Alors on dance", 205)
+#Eerst parameters van alle functies maken.
+#Parameter die meegegeven word aan class SONG
+def create_songs():
+    return [Song("SONG0001aaaa", "Alors on dance", 205),
+    Song("SONG0002eeee", "La tribu de Dana", 224),
+    Song("SONG1001aeio", "Les Lac du Connemara", 349)
+    ]
 
-    cd_chanson = CD("Chanson CD")
-    cd_chanson.add_song(alors_on_dance)
+#Parameter die meegegeven word aan 
+def name():
+    return "French Songs"
 
-    cd_chanson.create_back_cover()
-    assert cd_chanson.create_back_cover == " Album: Chanson CD\nSensualité - 232s\n Alors on dance - 205s\n Ca plane pour moi - 182s"
+def credits():
+    return "La douce France"
+
+def test_create_back_cover_of_CD():
+    test_name = name()
+    cd_french_songs = CD(test_name)
+    test_songs = create_songs()
+    for song in test_songs:
+        cd_french_songs.add_song(song)
+    back_cover = f"Album: {test_name}\nLes Lac du Connemara - 349s (ID: SONG1001aeio)\nLa tribu de Dana - 224s (ID: SONG0002eeee)\nAlors on dance - 205s (ID: SONG0001aaaa)"
+    assert back_cover == cd_french_songs.create_back_cover()
+
+def test_create_back_cover_of_DigitalAlbum():
+    test_name = name()
+    test_credits = credits()
+    test_Album = DigitalAlbum(test_name,10000, test_credits)
+    test_songs = create_songs()
+    for song in test_songs:
+        test_Album.add_song(song)
+    back_cover = f"Album: {test_name}\nCredits: {test_credits}\nLes Lac du Connemara - 349s (ID: SONG1001aeio)\nLa tribu de Dana - 224s (ID: SONG0002eeee)\nAlors on dance - 205s (ID: SONG0001aaaa)"
+    assert test_Album.create_back_cover() == back_cover
