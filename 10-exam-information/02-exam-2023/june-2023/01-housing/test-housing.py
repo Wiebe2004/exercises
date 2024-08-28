@@ -10,17 +10,18 @@
 # Extra tests zullen niet leiden tot een hoger cijfer.
 # Dit bestand moet zonder fouten uitgevoerd kunnen worden om punten te krijgen voor de vereiste testen.
 
-from housing import Villa,StudentenKot 
+from housing import *
 
-import pytest
+def test_maximum_occupants_kot():
+    test_kot = StudentKot("Kortestraat 6, 3000 Leuven",20)
+    kot_value = test_kot.calculate_value()
+    test_value = 150000+(750*test_kot.area) 
+    assert kot_value == test_value
 
-def setup_maximum_occupants():
-    global studio,studio2,appartement
-    studio = StudentenKot("Dorpsstraat 25",30)
-    studio2 = StudentenKot("Dorpsstraat 26",40)
-    appartement = Villa("lakenlaan 20",200,3,None)
+def test_maximum_occupants_villa():
+    test_villa = Villa("Roeselbergdal 44, 3012 Wilsele", 151, 4, 1)
+    villa_value = test_villa.calculate_value()
+    test_value = (25000*test_villa.number_of_rooms) + (2100*test_villa.area) + (10000*test_villa.garage_capacity)
+    assert villa_value == test_value
 
-def test_maximum_occupants():
-    assert studio.maximum_occupants == 1
-    assert studio2.maximum_occupants == 2
-    assert appartement.maximum_occupants == 6
+# Kan misschien ook zoals eerdere testen de eerste testen, check deze indien tijd over. 
